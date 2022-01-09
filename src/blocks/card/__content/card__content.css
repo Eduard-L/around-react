@@ -1,0 +1,15 @@
+.card__content {
+  background-color: white;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  padding-left: 21px;
+  padding-right: 15px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-sizing: border-box;
+  min-height: 79px;
+}

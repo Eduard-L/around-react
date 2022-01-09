@@ -1,0 +1,16 @@
+.card__button {
+  transition: opacity 0.5s linear;
+  background-image: url(../../../images/logo_place_card.svg);
+  width: 22px;
+  height: 19px;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+  border-style: none;
+}
+
+.card__button:hover {
+  opacity: 0.5;
+  cursor: pointer;
+}

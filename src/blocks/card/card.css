@@ -1,0 +1,13 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    max-width: 420px;
+    transition: transform 0.3s ease-in-out;
+    
+}
+
+.card:hover{
+    
+    transform: scale(1.05);
+   
+}

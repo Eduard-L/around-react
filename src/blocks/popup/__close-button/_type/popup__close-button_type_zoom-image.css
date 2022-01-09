@@ -1,0 +1,6 @@
+@media screen and (max-width:520px) {
+    .popup__close-button_type_zoom-image {
+        top: -36px;
+        right: -36px;
+    }
+}

@@ -1,0 +1,26 @@
+.profile__photo {
+	border-radius: 50%;
+	width: 120px;
+	background-image: url(../../../images/spartna__image.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	min-height: 120px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.profile__photo::before {
+	content: " ";
+	width: 120px;
+	height: 120px;
+	background-color: black;
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	transition: opacity .3s linear;
+}
+.profile__photo:hover::before {
+	opacity: 0.4;
+}
