@@ -1,7 +1,7 @@
 
 import { Card } from "./Card";
 import { useEffect, useState } from "react";
-import { api } from "./Api.js";
+import { api } from "../utils/Api.js";
 import profilePicSrcByDefault from '../images/spartna__image.jpg'
 
 
