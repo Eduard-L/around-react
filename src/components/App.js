@@ -9,18 +9,19 @@ import { useState } from 'react';
 
 function App() {
 
-  const [isEditProfilePopupOpen, setStateForProfilePopup] = useState(false)
-  const [isAddPlacePopupOpen, setStateAddPlacePopup] = useState(false)
-  const [isEditAvatarPopupOpen, setStateEditAvatarPopup] = useState(false)
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
+  const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
+  const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false)
   const [selectedCard, setSelectedCard] = useState({})
-  const [isImagePopupIsOpen, setStateImagePopup] = useState(false)
+  const [isImagePopupIsOpen, setIsImagePopupIsOpen] = useState(false)
 
 
   function closeAllPopups() {
-    setStateForProfilePopup(false)
-    setStateAddPlacePopup(false)
-    setStateEditAvatarPopup(false)
-    setStateImagePopup(false)
+    setIsEditProfilePopupOpen(false)
+    setIsAddPlacePopupOpen(false)
+    setIsEditAvatarPopupOpen(false)
+    setIsImagePopupIsOpen(false)
+    setTimeout(() => { setSelectedCard({}) }, 1000)
 
   }
 
@@ -28,26 +29,26 @@ function App() {
 
   function handleAddPlaceClick() {
 
-    setStateAddPlacePopup(true)
+    setIsAddPlacePopupOpen(true)
 
   }
 
   function handleEditProfileClick() {
 
-    setStateForProfilePopup(true)
+    setIsEditProfilePopupOpen(true)
 
   }
 
   function handleEditAvatarClick() {
 
-    setStateEditAvatarPopup(true)
+    setIsEditAvatarPopupOpen(true)
 
   }
 
   function handleCardClick(props) {
 
     setSelectedCard(props)
-    setStateImagePopup(true)
+    setIsImagePopupIsOpen(true)
 
   }
 

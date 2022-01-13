@@ -43,3 +43,4 @@
 @import url(./blocks/like-wrapper/like-wrapper.css);
 @import url(./blocks/card/__num-likes/card__num-likes.css);
 @import url(./blocks/popup/__form/type/popup__form_type_delete-card.css);
+@import url(./blocks/loader/loader.css);

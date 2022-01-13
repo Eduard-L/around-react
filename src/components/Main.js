@@ -2,6 +2,7 @@
 import { Card } from "./Card";
 import { useEffect, useState } from "react";
 import { api } from "../utils/Api.js";
+import { Spinner } from "./Spinner";
 import profilePicSrcByDefault from '../images/spartna__image.jpg'
 
 
@@ -13,26 +14,37 @@ function Main(props) {
     const [userDescription, setUserDescription] = useState("Warrior")
     const [userAvatar, setUserAvatar] = useState(profilePicSrcByDefault)
     const [cards, setCards] = useState([])
+    const [isLoading, setisLoading] = useState(false)
 
-    useEffect(async () => {
-        try {
-            const [cardsData, userInfo] = await Promise.all([api.getInitialCards(), api.getUserData()])
-            if (userInfo, cardsData) {
+    useEffect(() => {
 
-                setUserName(userInfo.name);
-                setUserDescription(userInfo.about);
-                setUserAvatar(userInfo.avatar)
-                setCards(cardsData)
+        (async function () { // dont make the call back async , react methods are sync 
+            setisLoading(true)
+            try {
+                const [cardsData, userInfo] = await Promise.all([api.getInitialCards(), api.getUserData()])
+                if (userInfo, cardsData) {
+
+                    setUserName(userInfo.name);
+                    setUserDescription(userInfo.about);
+                    setUserAvatar(userInfo.avatar)
+                    setCards(cardsData)
+
+                }
+            }
+            catch (error) {
+
+                console.log('check your error', error);
+                alert("something went wrong")
+
 
             }
-        }
-        catch (error) {
+            finally {
+                setisLoading(false);
+            }
 
-            console.log('check your error', error);
-            alert("something went wrong")
+        })();
 
 
-        }
     }, [])
 
     return (
@@ -42,20 +54,21 @@ function Main(props) {
             <section className="profile">
 
                 <div className="profile__photo" style={{ backgroundImage: `url(${userAvatar})` }} >
-                    <button className="profile__edit-img-button" onClick={props.onEditAvatarClick}></button>
+                    <button className="profile__edit-img-button" onClick={props.onEditAvatarClick} disabled={isLoading} ></button>
                 </div>
                 <div className="profile__info">
                     <h1 className="profile__name">{userName}</h1>
-                    <button className="profile__edit-button" type="button" onClick={props.onEditProfileClick}>
+                    <button className="profile__edit-button" type="button" onClick={props.onEditProfileClick} disabled={isLoading}>
                     </button>
                     <p className="profile__description">{userDescription}</p>
                 </div>
-                <button className="profile__add-button" type="button" onClick={props.onAddPlaceClick}>
+                <button className="profile__add-button" type="button" onClick={props.onAddPlaceClick} disabled={isLoading}>
                 </button>
             </section>
 
+
             <section className="cards">
-                {
+                {isLoading ? <Spinner /> :
 
                     cards.map((card) => {
 
