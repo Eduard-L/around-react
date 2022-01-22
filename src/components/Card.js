@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import CurrentUserContext from "../context/CurrentUserContext";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 function Card({ card, onCardClick, id, link, title, likes, onCardLike, onCardDelete }) {
     const userInfoContext = useContext(CurrentUserContext)
+
+
+
     // Checking if the current user is the owner of the current card
-
-
     const isOwn = card.owner._id === userInfoContext._id;
 
     const isLiked = card.likes.some(like => like._id === userInfoContext._id);

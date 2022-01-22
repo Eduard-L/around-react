@@ -7,7 +7,7 @@ import { Footer } from './Footer';
 import '../index.css';
 import { useState, useEffect } from 'react';
 import { api } from '../utils/Api';
-import CurrentUserContext from '../context/CurrentUserContext.js'
+import CurrentUserContext from '../contexts/CurrentUserContext.js'
 import { EditProfilePopup } from './EditProfilePopup';
 import { EditAvatarPopup } from './EditAvatarPopup'
 import { AddPlacePopup } from './AddPlacePopup'

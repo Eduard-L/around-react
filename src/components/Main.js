@@ -3,7 +3,7 @@ import { Card } from "./Card";
 import { useContext } from "react";
 import { Spinner } from "./Spinner";
 
-import CurrentUserContext from "../context/CurrentUserContext";
+import CurrentUserContext from "../contexts/CurrentUserContext";
 
 
 

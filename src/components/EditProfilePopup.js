@@ -1,6 +1,6 @@
 import { PopupWithForm } from "./PopupWithForm"
 import { useState, useContext, useEffect } from "react"
-import CurrentUserContext from "../context/CurrentUserContext"
+import CurrentUserContext from "../contexts/CurrentUserContext"
 
 
 
