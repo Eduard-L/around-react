@@ -1,51 +1,19 @@
 
 import { Card } from "./Card";
-import { useEffect, useState } from "react";
-import { api } from "../utils/Api.js";
+import { useContext } from "react";
 import { Spinner } from "./Spinner";
-import profilePicSrcByDefault from '../images/spartna__image.jpg'
+
+import CurrentUserContext from "../context/CurrentUserContext";
 
 
 
 
 
-function Main(props) {
-    const [userName, setUserName] = useState('Spartan')
-    const [userDescription, setUserDescription] = useState("Warrior")
-    const [userAvatar, setUserAvatar] = useState(profilePicSrcByDefault)
-    const [cards, setCards] = useState([])
-    const [isLoading, setisLoading] = useState(false)
-
-    useEffect(() => {
-
-        (async function () { // dont make the call back async , react methods are sync 
-            setisLoading(true)
-            try {
-                const [cardsData, userInfo] = await Promise.all([api.getInitialCards(), api.getUserData()])
-                if (userInfo, cardsData) {
-
-                    setUserName(userInfo.name);
-                    setUserDescription(userInfo.about);
-                    setUserAvatar(userInfo.avatar)
-                    setCards(cardsData)
-
-                }
-            }
-            catch (error) {
-
-                console.log('check your error', error);
-                alert("something went wrong")
+function Main({ onAddPlaceClick, onEditProfileClick, onEditAvatarClick, onCardClick, cards, isLoading, onCardLike, onCardDelete }) {
 
 
-            }
-            finally {
-                setisLoading(false);
-            }
+    const userInfoContext = useContext(CurrentUserContext)
 
-        })();
-
-
-    }, [])
 
     return (
 
@@ -53,16 +21,16 @@ function Main(props) {
 
             <section className="profile">
 
-                <div className="profile__photo" style={{ backgroundImage: `url(${userAvatar})` }} >
-                    <button className="profile__edit-img-button" onClick={props.onEditAvatarClick} disabled={isLoading} ></button>
+                <div className="profile__photo" style={{ backgroundImage: `url(${userInfoContext.avatar})` }} >
+                    <button className="profile__edit-img-button" onClick={onEditAvatarClick} disabled={isLoading} ></button>
                 </div>
                 <div className="profile__info">
-                    <h1 className="profile__name">{userName}</h1>
-                    <button className="profile__edit-button" type="button" onClick={props.onEditProfileClick} disabled={isLoading}>
+                    <h1 className="profile__name">{userInfoContext.name}</h1>
+                    <button className="profile__edit-button" type="button" onClick={onEditProfileClick} disabled={isLoading}>
                     </button>
-                    <p className="profile__description">{userDescription}</p>
+                    <p className="profile__description">{userInfoContext.about}</p>
                 </div>
-                <button className="profile__add-button" type="button" onClick={props.onAddPlaceClick} disabled={isLoading}>
+                <button className="profile__add-button" type="button" onClick={onAddPlaceClick} disabled={isLoading}>
                 </button>
             </section>
 
@@ -76,10 +44,15 @@ function Main(props) {
 
                             <Card
                                 card={card}
-                                onCardClick={props.onCardClick}
+                                onCardClick={onCardClick}
+                                id={card._id}
                                 key={card._id} link={card.link}
                                 title={card.name}
                                 likes={`${card.likes.length}`}
+                                onCardLike={onCardLike}
+                                onCardDelete={onCardDelete}
+
+
 
                             />
 

@@ -104,6 +104,7 @@ export default class Api {
 
     }
     async likeCard(cardId) {
+
         const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
             method: "PUT",
             headers: {
@@ -113,6 +114,8 @@ export default class Api {
         })
 
         return this._checkResponse(response)
+
+
     }
     async removeLikeCard(cardId) {
         const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
@@ -125,6 +128,34 @@ export default class Api {
         })
 
         return this._checkResponse(response)
+    }
+    async changeLikeCardStatus(cardId, isLiked) {
+        if (isLiked) {
+            const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
+                method: "PUT",
+                headers: {
+                    authorization: this._token,
+                    "Content-Type": "application/json"
+                },
+            })
+
+            return this._checkResponse(response)
+        }
+        else {
+            const response = await fetch(`${this._url}/cards/likes/${cardId}`, {
+                method: "DELETE",
+                headers: {
+                    authorization: this._token,
+                    "Content-Type": "application/json"
+                },
+
+            })
+
+            return this._checkResponse(response)
+        }
+
+
+
     }
 
 }

@@ -1,9 +1,34 @@
+import { useContext } from "react";
+import CurrentUserContext from "../context/CurrentUserContext";
+
+function Card({ card, onCardClick, id, link, title, likes, onCardLike, onCardDelete }) {
+    const userInfoContext = useContext(CurrentUserContext)
+    // Checking if the current user is the owner of the current card
 
 
-function Card(props) {
+    const isOwn = card.owner._id === userInfoContext._id;
+
+    const isLiked = card.likes.some(like => like._id === userInfoContext._id);
+    const cardDeleteButtonClassName = (`${isOwn ? 'card__delete-button' : 'card__delete-button_hidden '}`)
+    const cardLikeButtonClassName = (`${isLiked ? 'card__button card__button_black' : 'card__button'}`);
+
+
+
+    const nubmerOfLikesClassName = (`${parseInt(likes) === 0 ? 'card__delete-button_hidden ' : 'card__num-likes'}`)
+
+    function handleDeleteButton() {
+        onCardDelete(card)
+    }
+
+
+    function handleLikeClick() {
+        onCardLike(card);
+    }
+
+
     function handleClick() {
 
-        props.onCardClick(props.card);
+        onCardClick(card);
 
     }
     return (
@@ -11,22 +36,23 @@ function Card(props) {
 
         <article className="card">
             <div className="image-wrapper">
-                <img onClick={handleClick} src={props.link} alt={props.name} className="card__image" />
+                <img onClick={handleClick} src={link} alt={card.name} className="card__image" />
                 <button
-                    className="card__delete-button"
+                    className={cardDeleteButtonClassName}
                     type="button"
                     name="delete-button"
+                    onClick={handleDeleteButton}
                 ></button>
             </div>
             <div className="card__content">
-                <h2 className="card__title">{props.title}</h2>
+                <h2 className="card__title">{title}</h2>
                 <div className="like-wrapper">
-                    <button className="card__button" type="button"> </button>
-                    <span className="card__num-likes">{props.likes}</span>
+                    <button className={cardLikeButtonClassName} onClick={handleLikeClick} type="button"> </button>
+                    <span className={nubmerOfLikesClassName}>{likes}</span>
                 </div>
             </div>
 
-        </article>
+        </article >
 
 
 
