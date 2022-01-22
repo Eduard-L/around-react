@@ -6,13 +6,18 @@ import { ImagePopup } from "./ImagePopup";
 import { Footer } from './Footer';
 import '../index.css';
 import { useState, useEffect } from 'react';
-import { api } from '../utils/Api';
+import { api } from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext.js'
 import { EditProfilePopup } from './EditProfilePopup';
 import { EditAvatarPopup } from './EditAvatarPopup'
 import { AddPlacePopup } from './AddPlacePopup'
+import Api from '../utils/api'
 
 function App() {
+  const api = new Api({
+    baseUrl: "https://around.nomoreparties.co/v1/group-12",
+    token: "61a577b5-41b8-4f4a-b2cc-045694a09d23"
+  });
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)

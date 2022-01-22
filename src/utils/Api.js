@@ -159,11 +159,11 @@ export default class Api {
     }
 
 }
-const api = new Api({
-    baseUrl: "https://around.nomoreparties.co/v1/group-12",
-    token: "61a577b5-41b8-4f4a-b2cc-045694a09d23"
-});
-export { api };
+// const api = new Api({
+//     baseUrl: "https://around.nomoreparties.co/v1/group-12",
+//     token: "61a577b5-41b8-4f4a-b2cc-045694a09d23"
+// });
+// export { api };
 
 
 
