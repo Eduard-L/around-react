@@ -1,4 +1,4 @@
-export default class Api {
+class Api {
     constructor(options) {
         this._url = options.baseUrl
         this._token = options.token
@@ -159,11 +159,11 @@ export default class Api {
     }
 
 }
-const api = new Api({
+export default new Api({
     baseUrl: "https://around.nomoreparties.co/v1/group-12",
     token: "61a577b5-41b8-4f4a-b2cc-045694a09d23"
 });
-export { api };
+
 
 
 

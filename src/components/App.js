@@ -6,7 +6,7 @@ import { ImagePopup } from "./ImagePopup";
 import { Footer } from './Footer';
 import '../index.css';
 import { useState, useEffect } from 'react';
-import { api } from '../utils/Api';
+import api from '../utils/api';
 import CurrentUserContext from '../contexts/CurrentUserContext.js'
 import { EditProfilePopup } from './EditProfilePopup';
 import { EditAvatarPopup } from './EditAvatarPopup'
@@ -15,6 +15,7 @@ import { AddPlacePopup } from './AddPlacePopup'
 
 function App() {
 
+  // states
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false)
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false)
