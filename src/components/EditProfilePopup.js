@@ -13,7 +13,7 @@ export function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
     useEffect(() => {
         setName(userInfo.name);
         setDescription(userInfo.about);
-    }, [userInfo]);
+    }, [userInfo, isOpen]);
 
     function handleSubmit(e) {
         e.preventDefault();
